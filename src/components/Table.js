@@ -54,8 +54,28 @@ const Table = ({ onUpdateClick, onDeleteClick}) => {
           </tr>
         </thead>
         <tbody>
-          {filteredUsers.map((user) => (
-            <tr key={user.id}>
+        {filteredUsers.map((user) => (
+    <tr key={user.id} >
+        <td style={{cursor:"pointer",}} onClick={() => handleClick(user.id)}>{user.name}</td>
+        <td className="sm">{user.email}</td>
+        <td>{user.phone}</td>
+        <td
+            onClick={() => onUpdateClick(user)}
+            className="text-primary cursor-pointer text-center"
+        >
+            <GrEdit />
+        </td>
+        <td
+            onClick={() => onDeleteClick(user)}
+            className="text-danger cursor-pointer"
+        >
+            <MdDelete />
+        </td>
+    </tr>
+))}
+
+          {/* {filteredUsers.map((user) => (
+            <tr key={user.id} className={user.id % 2 ==0 ? 'bg-success' : 'bg-dark'}>
               <td onClick={() => handleClick(user.id)}>{user.name}</td>
               <td className="sm">{user.email}</td>
               <td>{user.phone}</td>
@@ -71,8 +91,8 @@ const Table = ({ onUpdateClick, onDeleteClick}) => {
               >
               <MdDelete />
               </td>
-            </tr>
-          ))}
+            </tr> */}
+          {/* ))} */}
         </tbody>
       </table>
     </div>
